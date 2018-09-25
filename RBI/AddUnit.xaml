@@ -1,0 +1,114 @@
+﻿<Window x:Class="RBI.AddUnit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RBI"
+        mc:Ignorable="d"
+        Title="AddUnit" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Unit No." Grid.Row="0" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitNo" Grid.Column="1" Grid.Row="0" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Unit Type." Grid.Row="1" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitType" Grid.Column="1" Grid.Row="1" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Unit Manufacture" Grid.Row="2" Grid.Column="0"    
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitManufacture" Grid.Column="1" Grid.Row="2" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Registration No." Grid.Row="3" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitRegistrationNo" Grid.Column="1" Grid.Row="3" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Commissioning Date" Grid.Row="4" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitCommissionDate" Grid.Column="1" Grid.Row="4" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Configuration" Grid.Row="0" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitConfiguration" Grid.Column="3" Grid.Row="0" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Design Code" Grid.Row="1" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitDesignCode" Grid.Column="3" Grid.Row="1" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Steam Flow(tonne/h)" Grid.Row="2" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitSteamFlow" Grid.Column="3" Grid.Row="2" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Cost per MW/h" Grid.Row="3" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitCostPerMWh" Grid.Column="3" Grid.Row="3" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="MCR(MW)" Grid.Row="4" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitMCR" Grid.Column="3" Grid.Row="4" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <!--Final Steam Condition -->
+        <Label Content="Final Steam Condition" Grid.Row="5" Grid.Column="0"
+               Grid.ColumnSpan="4"
+               Style="{StaticResource SubHeading}"/>
+
+        <Label Content="Design&#10;Temperature(C)" Grid.Row="6" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitDesignTempSteam" Grid.Column="1" Grid.Row="6" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Design Pressure(MPa)" Grid.Row="6" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitDesignPreSteam" Grid.Column="3" Grid.Row="6" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <!--Economiser Condition -->
+        <Label Content="Economiser Condition" Grid.Row="7" Grid.Column="0"
+               Grid.ColumnSpan="4"
+               Style="{StaticResource SubHeading}"/>
+
+        <Label Content="Design&#10;Temperature(C)" Grid.Row="8" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitDesignTempEconomiser" Grid.Column="1" Grid.Row="8" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Design Pressure(MPa)" Grid.Row="8" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="UnitDesignPreEconomiser" Grid.Column="3" Grid.Row="8" 
+                 Style="{StaticResource InputTextBox}" />
+
+        <Button Content="Save" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2"
+                x:Name="AddUnitSaveButton"
+                Click="AddUnitSaveButton_OnClick"/>
+    </Grid>
+</Window>

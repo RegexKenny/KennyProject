@@ -1,0 +1,287 @@
+﻿<ResourceDictionary x:Class="RBI.Resources.ConsequenceSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:src="clr-namespace:RBI.Component"
+        xmlns:inputValidation="clr-namespace:RBI.InputValidation"
+        mc:Ignorable="d">
+    <Style TargetType="TextBlock" x:Key="ConsequenceSubHeading">
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="LightGray" />
+    </Style>
+    <Style TargetType="Label" x:Key="Description">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="TextBox" x:Key="Input">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CalculatedResult">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+    <Style TargetType="Border" x:Key="InputBorder">
+        <Setter Property="Background" Value="LightGray" />
+    </Style>
+    <Style TargetType="ComboBox" x:Key="InputComboBox">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5" />
+    </Style>
+
+    <DataTemplate x:Key ="ConsequenceSetupTemplate" DataType="{x:Type src:Component}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- Consequence Setup -->
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"
+                   VerticalContentAlignment="Center" Background="LightGray">
+                <TextBlock  Text="Consequence Setup"
+                            Style="{StaticResource ConsequenceSubHeading}"/>
+            </Label>
+            <!-- First two columns -->
+            <Label Grid.Column="0" Grid.Row="1"
+                   Content="Possible Damage"
+                   Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
+                    Style="{StaticResource InputBorder}">
+                <TextBox x:Name="C_PossibleDamageTextBox"
+                         Style="{StaticResource Input}" Width="650"
+                         HorizontalContentAlignment="Stretch"
+                         Text="{Binding Path=PossibleDamage, Mode=TwoWay,
+                                UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="2"
+       Content="Level of Damage"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="2"
+        Style="{StaticResource InputBorder}">
+                <ComboBox Name="C_LevelOfDamageComboBox"
+              Style="{StaticResource InputComboBox}">
+                    <ComboBoxItem IsSelected="True">Major Rupture</ComboBoxItem>
+                    <ComboBoxItem>Major Leak</ComboBoxItem>
+                    <ComboBoxItem>Minor Leak</ComboBoxItem>
+                </ComboBox>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="3"
+       Content="Location of Damage"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="3"
+        Style="{StaticResource InputBorder}">
+                <ComboBox Name="C_LocationOfDamageComboBox"
+              Style="{StaticResource InputComboBox}">
+                    <ComboBoxItem IsSelected="True">Internal</ComboBoxItem>
+                    <ComboBoxItem>External HE</ComboBoxItem>
+                    <ComboBoxItem>External LE</ComboBoxItem>
+                </ComboBox>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="4"
+       Content="Probable Action"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="4"
+        Style="{StaticResource InputBorder}">
+                <ComboBox Name="C_ProbableActionComboBox"
+              Style="{StaticResource InputComboBox}">
+                    <ComboBoxItem IsSelected="True">Repair</ComboBoxItem>
+                    <ComboBoxItem>Replace</ComboBoxItem>
+                </ComboBox>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="5"
+       Content="C_Generation Revenue, $/MWh"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="5"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_GenerationRevenueTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="GenerationRevenue" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:PositiveNumberRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="6"
+       Content="Size of Generator, MW"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="6"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_SizeOfGenerationTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="SizeOfGenerator" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:PositiveNumberRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <!-- Last two columns -->
+            <Label Grid.Column="2" Grid.Row="2"
+       Content="Estimated Capital/Repair Cost, k$"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="3" Grid.Row="2"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_ExtimatedCRCostTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="EstimatedCapitalRepairCost" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:PositiveNumberRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="2" Grid.Row="3"
+       Content="Estimated Cost to Business, k$"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="3" Grid.Row="3"
+        Style="{StaticResource InputBorder}">
+                <TextBlock Name="C_EstimatedCostToBusinessTextBlock"
+               Style="{StaticResource CalculatedResult}"
+               Text="{Binding Path=EstimatedCostToBusiness,
+                      UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Label Grid.Column="2" Grid.Row="4"
+       Content="Estimated Repair/Replace Duration, d"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="3" Grid.Row="4"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_EstimatedRRDurationTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="EstimatedRepairReplaceDuration" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:PositiveNumberRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"
+       Style="{StaticResource Description}"/>
+            <Label Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2"
+       Style="{StaticResource Description}"/>
+            <!-- Consequence Calculation -->
+            <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="4"
+       VerticalContentAlignment="Center" Background="LightGray">
+                <TextBlock Text="Consequence"
+               Style="{StaticResource ConsequenceSubHeading}"/>
+            </Label>
+            <!-- First two columns -->
+            <Label Grid.Column="0" Grid.Row="8"
+       Content="Health &amp; Safety Risk"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="8"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_HealthSafetyRiskTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="HealthSafetyRisk" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:RiskLevelRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="9"
+       Content="Business Interuption Risk"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="9"
+        Style="{StaticResource InputBorder}">
+                <TextBlock Name="C_BusinessInteruptionRiskTextBlock"
+               Style="{StaticResource CalculatedResult}"
+       Text="{Binding Path=BusinessInteruptionRisk,
+              UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <Label Grid.Column="0" Grid.Row="10"
+       Content="Financial Cost"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="1" Grid.Row="10"
+        Style="{StaticResource InputBorder}">
+                <TextBlock Name="C_FinancialCostTextBlock"
+               Style="{StaticResource CalculatedResult}"
+       Text="{Binding Path=FinancialCost,
+              UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+            <!-- Last two columns -->
+            <Label Grid.Column="2" Grid.Row="8"
+       Content="Environmental"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="3" Grid.Row="8"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_EnvironmentalRiskTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="EnvironmentalRisk" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:RiskLevelRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="2" Grid.Row="9"
+       Content="Reputational Damage"
+       Style="{StaticResource Description}"/>
+            <Border Grid.Column="3" Grid.Row="9"
+        Style="{StaticResource InputBorder}">
+                <TextBox Name="C_ReputationalDamageTextBox"
+             Style="{StaticResource Input}">
+                    <TextBox.Text>
+                        <Binding Path="ReputationalDamage" Mode="TwoWay"
+                     UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <inputValidation:RiskLevelRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </Border>
+            <Label Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2"
+                   Style="{StaticResource Description}">
+                <Button Background="DarkGray" Click="ConsequenceButton_OnClick"
+                        VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                Content="Calculate Consequence"/>
+            </Label>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

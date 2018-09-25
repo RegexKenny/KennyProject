@@ -1,0 +1,40 @@
+﻿<Window x:Class="RBI.PartTypeSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RBI"
+        mc:Ignorable="d"
+        Title="PartTypeSelector" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Unit"
+                x:Name="CreateUnitButton"
+                Grid.Column="0"
+                Grid.Row="0"
+                Click="CreateUnitButton_OnClick"/>
+        <Button Content="Component" 
+                x:Name="CreateComponentButton"
+                Grid.Column="1"
+                Grid.Row="0"
+                Click="CreateComponentButton_OnClick"/>
+        <Button Content="Part"
+                x:Name="CreatePartButton" 
+                Grid.Column="0"
+                Grid.Row="1"
+                Click="CreatePartButton_OnClick"/>
+        <Button Content="Level2"
+                x:Name="CreateLevel2Button" 
+                Grid.Column="1"
+                Grid.Row="1"
+                Click="CreateLevel2Button_OnClick"/>
+    </Grid>
+</Window>

@@ -1,0 +1,96 @@
+﻿<Fluent:RibbonWindow x:Class="RBI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RBI"
+        xmlns:Fluent="urn:fluent-ribbon"
+        xmlns:component="clr-namespace:RBI.Component"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000"> 
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <Fluent:Ribbon Grid.Row="0" Grid.ColumnSpan="6">
+            <!--Backstage-->
+            <Fluent:Ribbon.Menu>
+                <Fluent:Backstage>
+                    <Fluent:BackstageTabControl>
+                        <Fluent:BackstageTabItem Header="New" />
+                        <Fluent:Button Header="Print" />
+                        <Fluent:Button Header="Blue" />
+                    </Fluent:BackstageTabControl>
+                </Fluent:Backstage>
+            </Fluent:Ribbon.Menu>
+
+            <!--Tabs-->
+            <!--Home-->
+            <Fluent:RibbonTabItem Header="Home">
+                <Fluent:RibbonGroupBox Header="Home">
+                    <Fluent:Button Header="New" Click="NewButtonBase_OnClick"/>
+                    <Fluent:Button Header=""></Fluent:Button>
+
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+
+            <!--Standards-->
+
+        </Fluent:Ribbon>
+
+        <ListBox x:Name="ComponentListView" Grid.Column="0" Grid.Row="1"
+                 ItemsSource="{Binding Objects}"
+                 SelectedItem="{Binding SelectedObject}">
+            <ListBox.Resources>
+                <!-- Unit DataTemplate -->
+                <DataTemplate DataType="{x:Type component:Unit}">
+                    <Border BorderThickness="1" Padding="0"
+                        Background="GhostWhite"
+                        Name="Border" BorderBrush="Gray" Width="100">
+                        <Grid>
+                            <TextBlock Name="UnitName"
+                                   Style="{StaticResource PartInformation}"
+                                   Text="{Binding Path=Type}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+                <!-- Component DataTemplate -->
+                <DataTemplate DataType="{x:Type component:Component}">
+                    <Border BorderThickness="1" Padding="0"
+                        Background="GhostWhite"
+                        Name="Border" BorderBrush="Gray" Width="100">
+                        <Grid>
+                            <TextBlock Name="UnitName"
+                                   Style="{StaticResource PartInformation}"
+                                   Text="{Binding Path=Type}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+
+
+        <!--Result show -->
+        <TabControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5">
+            <TabItem Header="Basic Info" >
+                <ContentControl x:Name="BasicInfoContent"
+                                Content="{Binding SelectedObject}">
+                </ContentControl>
+            </TabItem>
+
+            <TabItem Header="Concequence">
+                <ContentControl x:Name="Consequence"
+                                Content="{Binding SelectedObject}"
+                                ContentTemplate="{StaticResource ConsequenceSetupTemplate}">
+                </ContentControl>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Fluent:RibbonWindow>

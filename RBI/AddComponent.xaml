@@ -1,0 +1,87 @@
+﻿<Window x:Class="RBI.AddComponent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RBI"
+        mc:Ignorable="d"
+        Title="AddComponent" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Type" Grid.Row="0" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentType" Grid.Column="1" Grid.Row="0"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Material" Grid.Row="1" Grid.Column="0"    
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentMaterial" Grid.Column="1" Grid.Row="1"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="O.D (mm)" Grid.Row="2" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentOutsideDiamiter" Grid.Column="1" Grid.Row="2"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Min. WT, t(mm)" Grid.Row="3" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentMinWT" Grid.Column="1" Grid.Row="3"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Actual WT, t(mm)" Grid.Row="4" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentActualWT" Grid.Column="1" Grid.Row="4"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Code Min. WT, t(mm)" Grid.Row="5" Grid.Column="0"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentCodeMinWT" Grid.Column="1" Grid.Row="5"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Design Temp.(C)" Grid.Row="0" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentDesignTemp" Grid.Column="3" Grid.Row="0"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Design Pressure (MPa)" Grid.Row="1" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentDesignPre" Grid.Column="3" Grid.Row="1"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Operating Temperature" Grid.Row="2" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentOperatingTemp" Grid.Column="3" Grid.Row="2"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Operating Pressure" Grid.Row="3" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentOperatingPre" Grid.Column="3" Grid.Row="3"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Label Content="Water/Stream" Grid.Row="4" Grid.Column="2"
+               Style="{StaticResource BasicInformation}"/>
+        <TextBox x:Name="ComponentWaterStream" Grid.Column="3" Grid.Row="4"
+                 Style="{StaticResource InputTextBox}" />
+
+        <Button Content="Save" Grid.Column="1" Grid.Row="6"
+                Grid.ColumnSpan="2"
+                x:Name="AddComponentSaveButton"
+                Click="AddComponentSaveButton_OnClick"/>
+    </Grid>
+</Window>
+
