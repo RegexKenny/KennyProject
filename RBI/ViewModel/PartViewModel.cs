@@ -95,16 +95,16 @@ namespace RBI
             return true;
         }
 
-        //Alternatively, to create an object and bind to the command of the button.
-        public ICommand UpdateObject => ReactiveCommand.CreateFromTask<Object>(UpdateDataAsync); // wrong return type
+        // Alternatively, to create an object and bind to the command of the button.
+//        public ICommand UpdateObject => ReactiveCommand.CreateFromTask<Object>(UpdateDataAsync); // wrong return type
 
+//        private async Task UpdateDataAsync()
+//        {
+//            using (var conn = new SQLiteConnection(App.DatabasePath))
+//            {
+//                conn.Update(SelectedObject);  // cannot use await here
+//            };
+//        }
 
-        private async Task UpdateDataAsync()
-        {
-            using (var conn = new SQLiteConnection(App.DatabasePath))
-            {
-                conn.Update(SelectedObject);  // cannot use await here
-            };
-        }
     }
 }
