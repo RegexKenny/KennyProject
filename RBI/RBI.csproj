@@ -104,6 +104,7 @@
     <Compile Include="Resources\ConsequenceSetup.xaml.cs">
       <DependentUpon>ConsequenceSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="AddComponent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,7 +149,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PartViewModel.cs" />
+    <Compile Include="ViewModel\PartViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

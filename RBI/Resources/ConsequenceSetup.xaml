@@ -279,8 +279,11 @@
                    Style="{StaticResource Description}">
                 <Button Background="DarkGray" Click="ConsequenceButton_OnClick"
                         VerticalContentAlignment="Center"
-                    HorizontalContentAlignment="Center"
-                Content="Calculate Consequence"/>
+                        HorizontalContentAlignment="Center"
+                        Content="Calculate Consequence"
+                        Command ="{Binding DataContext.UpdateCommand,
+                                  RelativeSource={RelativeSource Mode=FindAncestor,
+                                  AncestorType={x:Type ContentControl}}}"/>
             </Label>
         </Grid>
     </DataTemplate>

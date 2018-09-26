@@ -18,6 +18,8 @@ namespace RBI
     class PartViewModel: INotifyPropertyChanged
 
     {
+        private ICommand _updateCommand;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Object> Objects { get; } = new ObservableCollection<Object>();
@@ -32,14 +34,6 @@ namespace RBI
                 this._selectedObject = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedObject)));
             }
-        }
-
-        public void UpdateData()
-        {
-            using (var conn = new SQLiteConnection(App.DatabasePath))
-            {
-                conn.Update(SelectedObject);
-            };
         }
 
         public void LoadData()
@@ -74,5 +68,44 @@ namespace RBI
             }
         }
 
+        public ICommand UpdateCommand  // This command is not accessed by the button
+        {
+            get
+            {
+                if (_updateCommand == null)
+                {
+                    _updateCommand = new RelayCommand(
+                        param => this.UpdateData(),
+                        param => this.CanUpdate()
+                    );
+                }
+                return _updateCommand;
+            }
+        }
+
+        public void UpdateData()
+        {
+            using (var conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.Update(SelectedObject);
+            };
+        }
+
+        private bool CanUpdate()
+        {
+            return true;
+        }
+
+        //Alternatively, to create an object and bind to the command of the button.
+        public ICommand UpdateObject => ReactiveCommand.CreateFromTask<Object>(UpdateDataAsync); // wrong return type
+
+
+        private async Task UpdateDataAsync()
+        {
+            using (var conn = new SQLiteConnection(App.DatabasePath))
+            {
+                conn.Update(SelectedObject);  // cannot use await here
+            };
+        }
     }
 }
