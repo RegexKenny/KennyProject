@@ -11,7 +11,6 @@ using System.Windows.Input;
 using RBI.Annotations;
 using RBI.Component;
 using SQLite;
-using ReactiveUI;
 
 namespace RBI
 {
